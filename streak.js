@@ -24,27 +24,54 @@ function showMessage(text, isError = false) {
     }, 5000);
 }
 
+// function viewStreak(index) {
+//     const activity = activities[index];
+//     const detailedViewHTML = `
+//         <div class="modal-content">
+//             <h3>Streak Details</h3>
+//             <p><strong>Name:</strong> ${activity.name}</p>
+//             <p><strong>Start Date:</strong> ${activity.startDate}</p>
+//             <img src="${activity.image}" alt="Image of ${activity.name}" style="max-width: 30%; height: auto; border-radius: 10px;">
+//             <button id="modal-close-btn" onclick="closeDetailedView()">Close</button>
+//         </div>
+//     `;
+    
+//     // Set the modal content
+//     const detailedViewModal = document.getElementById('detailedViewModal');
+//     detailedViewModal.innerHTML = detailedViewHTML;
+//     detailedViewModal.style.display = 'flex'; // Make modal visible
+// }
+
+// function closeDetailedView() {
+//     const detailedViewModal = document.getElementById('detailedViewModal');
+//     detailedViewModal.style.display = 'none'; // Hide modal
+// }
+
 function viewStreak(index) {
     const activity = activities[index];
+    const { days, months, years } = calculateDateDifference(activity.startDate);
+
     const detailedViewHTML = `
         <div class="modal-content">
             <h3>Streak Details</h3>
             <p><strong>Name:</strong> ${activity.name}</p>
             <p><strong>Start Date:</strong> ${activity.startDate}</p>
+            <p><strong>Days Active:</strong> ${days} days</p>
+            <p><strong>Months Active:</strong> ${months} months</p>
+            <p><strong>Years Active:</strong> ${years} years</p>
             <img src="${activity.image}" alt="Image of ${activity.name}" style="max-width: 30%; height: auto; border-radius: 10px;">
             <button id="modal-close-btn" onclick="closeDetailedView()">Close</button>
         </div>
     `;
     
-    // Set the modal content
     const detailedViewModal = document.getElementById('detailedViewModal');
     detailedViewModal.innerHTML = detailedViewHTML;
-    detailedViewModal.style.display = 'flex'; // Make modal visible
+    detailedViewModal.style.display = 'flex'; 
 }
 
 function closeDetailedView() {
     const detailedViewModal = document.getElementById('detailedViewModal');
-    detailedViewModal.style.display = 'none'; // Hide modal
+    detailedViewModal.style.display = 'none'; 
 }
 
 
@@ -104,4 +131,17 @@ function deleteStreak(index) {
         updateUI();
         showMessage('Activity deleted successfully!');
     }
+}
+
+function calculateDateDifference(startDate) {
+    const start = new Date(startDate);
+    const current = new Date();
+    
+    const diffInMilliseconds = current - start;
+    
+    const days = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+    const months = Math.floor(days / 30);  
+    const years = Math.floor(months / 12); 
+
+    return { days, months, years };
 }
