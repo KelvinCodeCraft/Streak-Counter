@@ -6,7 +6,7 @@
 }
 
 .container{
-    height: 100vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -174,11 +174,12 @@
     font-weight: bold;
     text-align: center;
 }
-.inactivities{
+.activities{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     gap: 10px;
+
 }
 .task{
     display: flex;
@@ -254,3 +255,47 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 40%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+#modal-close-btn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-close-btn:hover {
+    background-color: darkred;
+}
+

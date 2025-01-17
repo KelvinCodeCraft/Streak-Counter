@@ -24,6 +24,30 @@ function showMessage(text, isError = false) {
     }, 5000);
 }
 
+function viewStreak(index) {
+    const activity = activities[index];
+    const detailedViewHTML = `
+        <div class="modal-content">
+            <h3>Streak Details</h3>
+            <p><strong>Name:</strong> ${activity.name}</p>
+            <p><strong>Start Date:</strong> ${activity.startDate}</p>
+            <img src="${activity.image}" alt="Image of ${activity.name}" style="max-width: 30%; height: auto; border-radius: 10px;">
+            <button id="modal-close-btn" onclick="closeDetailedView()">Close</button>
+        </div>
+    `;
+    
+    // Set the modal content
+    const detailedViewModal = document.getElementById('detailedViewModal');
+    detailedViewModal.innerHTML = detailedViewHTML;
+    detailedViewModal.style.display = 'flex'; // Make modal visible
+}
+
+function closeDetailedView() {
+    const detailedViewModal = document.getElementById('detailedViewModal');
+    detailedViewModal.style.display = 'none'; // Hide modal
+}
+
+
 function updateUI() {
     activitiesDiv.innerHTML = '';
     noActivities.style.display = activities.length === 0 ? 'block' : 'none';
@@ -42,6 +66,8 @@ function updateUI() {
         activitiesDiv.innerHTML += activityHTML;
     });
 }
+
+
 streakForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -71,11 +97,6 @@ activitiesDiv.addEventListener('click', (event) => {
         deleteStreak(index);
     }
 });
-
-function viewStreak(index) {
-    const activity = activities[index];
-    alert(`Viewing Streak:\nName: ${activity.name}\nStart Date: ${activity.startDate}`);
-}
 
 function deleteStreak(index) {
     if (confirm('Are you sure you want to delete this activity?')) {
