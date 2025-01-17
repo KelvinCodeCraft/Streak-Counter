@@ -174,7 +174,7 @@
     font-weight: bold;
     text-align: center;
 }
-.iactivities{
+.inactivities{
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
