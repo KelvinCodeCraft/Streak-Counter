@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="streak.css">
+    <title>streak counter</title>
+    <script src="./streak.js" defer></script>
+</head>
+
+<body>
+    <div class="container home">
+        <div class="home-wrapper">
+            <h2>Streak Counter</h2>
+            <div class="home-content-wrapper">
+                <button id="addFormButton">+</button>
+                <img src="assets/img1.png" alt="streak">
+                <p>Welcome to my streak counter</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="popup">
+        <div class="modal-content">
+            <form id="streakForm">
+                <input type="text" id="name" placeholder="Activity Name" required>
+                <input type="url" id="image" placeholder="Image URL" required>
+                <input type="date" id="startDate" required>
+                <button type="submit">Add Streak</button>
+            </form>
+            <button id="modal-close-btn" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <div class="iactivities">
+        <div id="noActivities" style="display: none;">No activities added yet.</div>
+        <div id="activities"></div>
+    </div>
+    <div id="message" style="display: none;"></div>
+</body>
+
+</html>
