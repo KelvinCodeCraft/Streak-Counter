@@ -24,29 +24,6 @@ function showMessage(text, isError = false) {
     }, 5000);
 }
 
-// function viewStreak(index) {
-//     const activity = activities[index];
-//     const detailedViewHTML = `
-//         <div class="modal-content">
-//             <h3>Streak Details</h3>
-//             <p><strong>Name:</strong> ${activity.name}</p>
-//             <p><strong>Start Date:</strong> ${activity.startDate}</p>
-//             <img src="${activity.image}" alt="Image of ${activity.name}" style="max-width: 30%; height: auto; border-radius: 10px;">
-//             <button id="modal-close-btn" onclick="closeDetailedView()">Close</button>
-//         </div>
-//     `;
-    
-//     // Set the modal content
-//     const detailedViewModal = document.getElementById('detailedViewModal');
-//     detailedViewModal.innerHTML = detailedViewHTML;
-//     detailedViewModal.style.display = 'flex'; // Make modal visible
-// }
-
-// function closeDetailedView() {
-//     const detailedViewModal = document.getElementById('detailedViewModal');
-//     detailedViewModal.style.display = 'none'; // Hide modal
-// }
-
 function viewStreak(index) {
     const activity = activities[index];
     const { days, months, years } = calculateDateDifference(activity.startDate);
